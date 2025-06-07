@@ -1,5 +1,7 @@
 # OneTabBrowser
 
+**OneTab Browser : Only One Tab Allow**
+
 OneTab Browser – Features:
 
 1. Simple Design
