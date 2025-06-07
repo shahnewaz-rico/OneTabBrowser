@@ -1,0 +1,9 @@
+2025/06/07-12:48:31.088 47e0 Reusing MANIFEST C:\MyPC\projects\OneTabBrowser\Exe\OneTabBrowser.exe.WebView2\EBWebView\Default\IndexedDB\https_www.youtube.com_0.indexeddb.leveldb/MANIFEST-000001
+2025/06/07-12:48:31.089 47e0 Recovering log #16
+2025/06/07-12:48:31.091 47e0 Reusing old log C:\MyPC\projects\OneTabBrowser\Exe\OneTabBrowser.exe.WebView2\EBWebView\Default\IndexedDB\https_www.youtube.com_0.indexeddb.leveldb/000016.log 
+2025/06/07-12:48:33.104 1978 Compacting 1@1 + 1@2 files
+2025/06/07-12:48:33.118 1978 Generated table #19@1: 333 keys, 68369 bytes
+2025/06/07-12:48:33.119 1978 Compacted 1@1 + 1@2 files => 68369 bytes
+2025/06/07-12:48:33.119 1978 compacted to: files[ 0 0 1 0 0 0 0 ]
+2025/06/07-12:48:33.121 1978 Delete type=2 #14
+2025/06/07-12:48:33.121 1978 Delete type=2 #17

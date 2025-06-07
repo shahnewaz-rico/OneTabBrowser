@@ -1,0 +1,6 @@
+2025/06/07-12:35:00.906 18b0 Reusing MANIFEST C:\MyPC\projects\OneTabBrowser\Exe\OneTabBrowser.exe.WebView2\EBWebView\Default\IndexedDB\https_www.youtube.com_0.indexeddb.leveldb/MANIFEST-000001
+2025/06/07-12:35:00.907 18b0 Recovering log #12
+2025/06/07-12:35:00.916 18b0 Reusing old log C:\MyPC\projects\OneTabBrowser\Exe\OneTabBrowser.exe.WebView2\EBWebView\Default\IndexedDB\https_www.youtube.com_0.indexeddb.leveldb/000012.log 
+2025/06/07-12:37:24.253 4be4 Level-0 table #17: started
+2025/06/07-12:37:24.286 4be4 Level-0 table #17: 1345671 bytes OK
+2025/06/07-12:37:24.290 4be4 Delete type=0 #12

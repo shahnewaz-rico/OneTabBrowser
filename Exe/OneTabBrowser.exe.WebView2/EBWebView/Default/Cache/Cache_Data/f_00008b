@@ -1,0 +1,1422 @@
+WEBVTT
+X-TIMESTAMP-MAP=LOCAL:00:00:00.000,MPEGTS:900000
+
+1
+00:00:00.000 --> 00:00:01.180
+In the previous section, we
+
+2
+00:00:01.180 --> 00:00:03.320
+talked about stored excesses and
+
+3
+00:00:03.320 --> 00:00:04.660
+how you can actually place
+
+4
+00:00:04.660 --> 00:00:07.420
+your payload anywhere on your
+
+5
+00:00:07.420 --> 00:00:08.660
+profile, anywhere that you can
+
+6
+00:00:08.660 --> 00:00:10.520
+actually comment or leave some
+
+7
+00:00:10.520 --> 00:00:11.360
+sort of a text. So
+
+8
+00:00:11.360 --> 00:00:13.320
+this example is an example
+
+9
+00:00:13.320 --> 00:00:15.120
+of looking for blind cross
+
+10
+00:00:15.120 --> 00:00:17.180
+-circuiting, which is very similar
+
+11
+00:00:17.180 --> 00:00:19.720
+to your stored excesses. But
+
+12
+00:00:19.720 --> 00:00:21.880
+sometimes just because the stored
+
+13
+00:00:21.880 --> 00:00:25.140
+excesses doesn't fire on the
+
+14
+00:00:25.140 --> 00:00:26.500
+application that you have access
+
+15
+00:00:26.500 --> 00:00:27.840
+to, it doesn't necessarily mean
+
+16
+00:00:27.840 --> 00:00:28.040
+that it's
+
+17
+00:00:28.073 --> 00:00:29.933
+not going to fire elsewhere.
+
+18
+00:00:29.933 --> 00:00:30.933
+And that could be within
+
+19
+00:00:30.933 --> 00:00:32.273
+the application itself. So maybe
+
+20
+00:00:32.273 --> 00:00:33.873
+your first name you set
+
+21
+00:00:33.873 --> 00:00:35.453
+it to a cost scripting
+
+22
+00:00:35.453 --> 00:00:36.913
+payload and maybe it doesn't
+
+23
+00:00:36.913 --> 00:00:37.973
+fire right away on your
+
+24
+00:00:37.973 --> 00:00:39.593
+profile page, but when you
+
+25
+00:00:39.593 --> 00:00:40.433
+go and send somebody a
+
+26
+00:00:40.433 --> 00:00:41.373
+friend request and then your
+
+27
+00:00:41.373 --> 00:00:42.933
+name pops up, maybe that
+
+28
+00:00:42.933 --> 00:00:44.633
+is where that cost scripting
+
+29
+00:00:44.633 --> 00:00:46.973
+fires. The other aspect of
+
+30
+00:00:46.973 --> 00:00:47.953
+cost scripting is what we
+
+31
+00:00:47.953 --> 00:00:49.153
+call a blind cost scripting
+
+32
+00:00:49.153 --> 00:00:50.833
+is when your access is
+
+33
+00:00:50.833 --> 00:00:52.653
+payload somehow ends up firing
+
+34
+00:00:52.653 --> 00:00:54.433
+on a back -end application.
+
+35
+00:00:54.433 --> 00:00:55.673
+This could be, for example,
+
+36
+00:00:55.673 --> 00:00:56.113
+an admin
+
+37
+00:00:56.146 --> 00:00:57.166
+page, it could be a
+
+38
+00:00:57.166 --> 00:00:58.966
+customer service page. It's something
+
+39
+00:00:58.966 --> 00:01:01.226
+that only the customers, I'm
+
+40
+00:01:01.226 --> 00:01:03.466
+sorry, only the employees of
+
+41
+00:01:03.466 --> 00:01:05.086
+that company have access to
+
+42
+00:01:05.086 --> 00:01:06.186
+and it's behind a VPN
+
+43
+00:01:06.186 --> 00:01:07.186
+or it's gated or whatever
+
+44
+00:01:07.186 --> 00:01:08.106
+the case may be. Think
+
+45
+00:01:08.106 --> 00:01:09.606
+of these as things that
+
+46
+00:01:09.606 --> 00:01:10.506
+you would never see. You
+
+47
+00:01:10.506 --> 00:01:11.566
+have to be a partner.
+
+48
+00:01:11.566 --> 00:01:12.666
+For example, this could be
+
+49
+00:01:12.666 --> 00:01:14.766
+a warehouse for shipment, not
+
+50
+00:01:14.766 --> 00:01:16.706
+only the shipment company of
+
+51
+00:01:16.706 --> 00:01:18.526
+that particular target has access
+
+52
+00:01:18.526 --> 00:01:20.046
+to. So let's start with
+
+53
+00:01:20.046 --> 00:01:21.646
+doing a cost -subscripting payload.
+
+54
+00:01:21.646 --> 00:01:22.446
+I was going to do
+
+55
+00:01:22.446 --> 00:01:23.886
+a really simple one of
+
+56
+00:01:23.886 --> 00:01:24.186
+just doing
+
+57
+00:01:24.220 --> 00:01:27.420
+the script alert and you
+
+58
+00:01:27.420 --> 00:01:29.300
+can push update here and
+
+59
+00:01:29.300 --> 00:01:29.880
+as soon as we update
+
+60
+00:01:29.880 --> 00:01:31.300
+our page, we can also
+
+61
+00:01:31.300 --> 00:01:33.040
+look at how this looks
+
+62
+00:01:33.040 --> 00:01:34.340
+on our end. Maybe it
+
+63
+00:01:34.340 --> 00:01:35.280
+is in a text area
+
+64
+00:01:35.280 --> 00:01:36.760
+here. It looks like it
+
+65
+00:01:36.760 --> 00:01:38.900
+doesn't actually fire on here
+
+66
+00:01:38.900 --> 00:01:40.820
+because it's being properly sanitized
+
+67
+00:01:40.820 --> 00:01:42.700
+and it is not actually
+
+68
+00:01:42.700 --> 00:01:44.020
+working, but because we're in
+
+69
+00:01:44.020 --> 00:01:44.900
+a text area, I'm just
+
+70
+00:01:44.900 --> 00:01:47.420
+gonna make the assumption and
+
+71
+00:01:47.420 --> 00:01:48.520
+close these tags. The only
+
+72
+00:01:48.520 --> 00:01:49.400
+things that I do for
+
+73
+00:01:49.400 --> 00:01:50.860
+blind cross -eye scripting is
+
+74
+00:01:50.860 --> 00:01:52.260
+you want to make a
+
+75
+00:01:52.293 --> 00:01:54.453
+The assumptions are I'm going
+
+76
+00:01:54.453 --> 00:01:55.613
+to assume that I'm going
+
+77
+00:01:55.613 --> 00:01:56.493
+to be in a specific
+
+78
+00:01:56.493 --> 00:01:58.493
+attack, for example, and because
+
+79
+00:01:58.493 --> 00:01:59.233
+I don't want to risk
+
+80
+00:01:59.233 --> 00:02:00.373
+being stuck in those, I'm
+
+81
+00:02:00.373 --> 00:02:01.773
+just going to automatically close
+
+82
+00:02:01.773 --> 00:02:02.753
+them. So I always have
+
+83
+00:02:02.753 --> 00:02:04.193
+a habit of closing the
+
+84
+00:02:04.193 --> 00:02:05.353
+text area and closing the
+
+85
+00:02:05.353 --> 00:02:07.113
+script tag and also doing
+
+86
+00:02:07.113 --> 00:02:08.533
+this just in case we're
+
+87
+00:02:08.533 --> 00:02:09.593
+in some input field or
+
+88
+00:02:09.593 --> 00:02:10.773
+something like that. We want
+
+89
+00:02:10.773 --> 00:02:11.453
+to make sure we make
+
+90
+00:02:11.453 --> 00:02:13.153
+those assumptions that we aren't
+
+91
+00:02:13.153 --> 00:02:14.213
+in some things that it's
+
+92
+00:02:14.213 --> 00:02:15.513
+going to prevent our payload
+
+93
+00:02:15.513 --> 00:02:16.713
+from firing. But now we're
+
+94
+00:02:16.713 --> 00:02:17.913
+going to update our page.
+
+95
+00:02:17.913 --> 00:02:19.093
+Going to go to home
+
+96
+00:02:19.093 --> 00:02:20.053
+is going to show our
+
+97
+00:02:20.053 --> 00:02:20.333
+username.
+
+98
+00:02:20.367 --> 00:02:21.847
+We go there. Same thing
+
+99
+00:02:21.847 --> 00:02:23.807
+in this bio example, nothing
+
+100
+00:02:23.807 --> 00:02:25.867
+fires. This page or this
+
+101
+00:02:25.867 --> 00:02:27.907
+website is completely not even
+
+102
+00:02:27.907 --> 00:02:29.887
+vulnerable. However, let's take a
+
+103
+00:02:29.887 --> 00:02:31.267
+look at the admin page.
+
+104
+00:02:31.267 --> 00:02:31.827
+I'm just going to take
+
+105
+00:02:31.827 --> 00:02:32.987
+this. I'm going to open
+
+106
+00:02:32.987 --> 00:02:34.847
+another browser. It's an incognito.
+
+107
+00:02:34.847 --> 00:02:36.287
+That means I'm not logged
+
+108
+00:02:36.287 --> 00:02:38.207
+in. If he's signing or
+
+109
+00:02:38.207 --> 00:02:39.127
+signed up, it shows a
+
+110
+00:02:39.127 --> 00:02:40.207
+username and go to it.
+
+111
+00:02:40.207 --> 00:02:41.227
+It doesn't fire, but let's
+
+112
+00:02:41.227 --> 00:02:43.327
+imagine now the admin is
+
+113
+00:02:43.327 --> 00:02:44.267
+going to open up this
+
+114
+00:02:44.267 --> 00:02:46.207
+page. We're going to log
+
+115
+00:02:46.207 --> 00:02:48.347
+in as our admin.
+
+116
+00:02:48.440 --> 00:02:50.340
+And once we log in,
+
+117
+00:02:50.340 --> 00:02:51.380
+we can see our no
+
+118
+00:02:51.380 --> 00:02:52.600
+-homsick username and it looks
+
+119
+00:02:52.600 --> 00:02:53.700
+like as soon as we
+
+120
+00:02:53.700 --> 00:02:55.560
+open up that page, this
+
+121
+00:02:55.560 --> 00:02:57.700
+alert actually fires. The way
+
+122
+00:02:57.700 --> 00:02:59.260
+to do this is you
+
+123
+00:02:59.260 --> 00:03:00.860
+want to use something called
+
+124
+00:03:00.860 --> 00:03:05.060
+excess hunter. You can use
+
+125
+00:03:05.060 --> 00:03:06.400
+Truffle Security's version of this
+
+126
+00:03:06.400 --> 00:03:07.380
+to put one up, but
+
+127
+00:03:07.380 --> 00:03:08.420
+you can also install your
+
+128
+00:03:08.420 --> 00:03:10.400
+own. We'll make a guide
+
+129
+00:03:10.400 --> 00:03:11.360
+on how to use excess
+
+130
+00:03:11.360 --> 00:03:12.660
+hunter later down the road
+
+131
+00:03:12.660 --> 00:03:13.520
+and one of our coming
+
+132
+00:03:13.520 --> 00:03:15.020
+updates, but to make it
+
+133
+00:03:15.020 --> 00:03:15.980
+easier, especially if you're a
+
+134
+00:03:15.980 --> 00:03:16.480
+newer hacker,
+
+135
+00:03:16.514 --> 00:03:17.634
+who doesn't have a lot
+
+136
+00:03:17.634 --> 00:03:19.334
+of knowledge of keeping your
+
+137
+00:03:19.334 --> 00:03:21.354
+own VPS or creating your
+
+138
+00:03:21.354 --> 00:03:22.654
+own incense. Just use something
+
+139
+00:03:22.654 --> 00:03:24.834
+like truffle sec and track
+
+140
+00:03:24.834 --> 00:03:25.514
+it that way you can
+
+141
+00:03:25.514 --> 00:03:27.154
+log in here. And once
+
+142
+00:03:27.154 --> 00:03:27.854
+you log in, they will
+
+143
+00:03:27.854 --> 00:03:28.754
+give you the payload to
+
+144
+00:03:28.754 --> 00:03:30.234
+use. You just stick that
+
+145
+00:03:30.234 --> 00:03:32.114
+into your bio or your
+
+146
+00:03:32.114 --> 00:03:34.034
+profile and it fires anytime
+
+147
+00:03:34.034 --> 00:03:35.854
+that page is visited. The
+
+148
+00:03:35.854 --> 00:03:37.574
+thing to think about the
+
+149
+00:03:37.574 --> 00:03:39.074
+blind cross eye scripting vulnerabilities
+
+150
+00:03:39.074 --> 00:03:40.914
+is you want to make
+
+151
+00:03:40.914 --> 00:03:41.714
+sure with blind cross eye
+
+152
+00:03:41.714 --> 00:03:43.514
+scripting, you make assumptions of
+
+153
+00:03:43.514 --> 00:03:44.554
+what could be
+
+154
+00:03:44.587 --> 00:03:46.527
+a place where an admin
+
+155
+00:03:46.527 --> 00:03:48.307
+or an employee or a
+
+156
+00:03:48.307 --> 00:03:50.027
+shipment company would see. So
+
+157
+00:03:50.027 --> 00:03:51.027
+these are things that your
+
+158
+00:03:51.027 --> 00:03:52.287
+address, it could be your
+
+159
+00:03:52.287 --> 00:03:53.387
+name, it could be your
+
+160
+00:03:53.387 --> 00:03:55.047
+signature. It could also be
+
+161
+00:03:55.047 --> 00:03:56.907
+in report abuse cases. So
+
+162
+00:03:56.907 --> 00:03:57.487
+if you go to a
+
+163
+00:03:57.487 --> 00:03:59.547
+website that has reported abuse
+
+164
+00:03:59.547 --> 00:04:00.747
+for a user, for example,
+
+165
+00:04:00.747 --> 00:04:01.527
+and let you say, hey,
+
+166
+00:04:01.527 --> 00:04:02.527
+make a comment on why
+
+167
+00:04:02.527 --> 00:04:03.227
+you want to report this
+
+168
+00:04:03.227 --> 00:04:04.447
+user, you can also use
+
+169
+00:04:04.447 --> 00:04:05.867
+that as a place to
+
+170
+00:04:05.867 --> 00:04:07.027
+use a blind call, so
+
+171
+00:04:07.027 --> 00:04:08.427
+scripting payload that you're going
+
+172
+00:04:08.427 --> 00:04:10.247
+to track using access center.
+
+173
+00:04:10.247 --> 00:04:11.867
+So really, really important, these
+
+174
+00:04:11.867 --> 00:04:12.627
+are some of
+
+175
+00:04:12.661 --> 00:04:14.321
+The most critical excess, a
+
+176
+00:04:14.321 --> 00:04:16.081
+lot of companies actually paid
+
+177
+00:04:16.081 --> 00:04:17.661
+their max credit for this
+
+178
+00:04:17.661 --> 00:04:18.681
+or their max balance for
+
+179
+00:04:18.681 --> 00:04:20.101
+this because of the fact
+
+180
+00:04:20.101 --> 00:04:21.341
+that it is so crucial
+
+181
+00:04:21.341 --> 00:04:22.901
+because it fires within an
+
+182
+00:04:22.901 --> 00:04:24.001
+internal network and some of
+
+183
+00:04:24.001 --> 00:04:25.521
+these admin panels have access
+
+184
+00:04:25.521 --> 00:04:27.561
+to massive amounts of users
+
+185
+00:04:27.561 --> 00:04:28.881
+that you're not supposed to
+
+186
+00:04:28.881 --> 00:04:29.621
+have access to. So it's
+
+187
+00:04:29.621 --> 00:04:31.681
+a very critical vulnerability for
+
+188
+00:04:31.681 --> 00:04:33.161
+you to try. But in
+
+189
+00:04:33.161 --> 00:04:35.021
+addition to looking at cross
+
+190
+00:04:35.021 --> 00:04:36.441
+-text script things within your
+
+191
+00:04:36.441 --> 00:04:37.901
+fields or within the user
+
+192
+00:04:37.901 --> 00:04:40.321
+fields is also looking at
+
+193
+00:04:40.734 --> 00:04:41.914
+different areas for us. So
+
+194
+00:04:41.914 --> 00:04:43.614
+let's try and look at
+
+195
+00:04:43.614 --> 00:04:44.814
+a second example. So if
+
+196
+00:04:44.814 --> 00:04:46.514
+you go back to your
+
+197
+00:04:46.514 --> 00:04:48.574
+excesses labs right here, we're
+
+198
+00:04:48.574 --> 00:04:50.354
+going to look at the
+
+199
+00:04:50.354 --> 00:04:51.814
+excesses from headers in which
+
+200
+00:04:51.814 --> 00:04:52.514
+by the name of it,
+
+201
+00:04:52.514 --> 00:04:53.354
+it's kind of obvious what
+
+202
+00:04:53.354 --> 00:04:53.994
+it is. But we're going
+
+203
+00:04:53.994 --> 00:04:54.614
+to do the same thing
+
+204
+00:04:54.614 --> 00:04:55.634
+here. I'm not going to
+
+205
+00:04:55.634 --> 00:04:56.834
+go back here, copy the
+
+206
+00:04:56.834 --> 00:04:57.834
+same payload. We're going to
+
+207
+00:04:57.834 --> 00:04:59.354
+go here and put them
+
+208
+00:04:59.354 --> 00:05:00.794
+in there. For this one,
+
+209
+00:05:00.794 --> 00:05:01.474
+we can put a fake
+
+210
+00:05:01.474 --> 00:05:02.714
+credit card number. This is
+
+211
+00:05:02.714 --> 00:05:04.134
+not a real website. And
+
+212
+00:05:04.134 --> 00:05:04.814
+we're going to face an
+
+213
+00:05:04.814 --> 00:05:06.254
+order and says thanks. Order
+
+214
+00:05:06.254 --> 00:05:07.354
+has been created. We're going
+
+215
+00:05:07.354 --> 00:05:08.774
+to go back and same
+
+216
+00:05:08.774 --> 00:05:08.774
+thing.
+
+217
+00:05:08.808 --> 00:05:09.608
+I'm going to go to
+
+218
+00:05:09.608 --> 00:05:11.288
+the admin page right here.
+
+219
+00:05:11.288 --> 00:05:11.588
+I'm going to open up
+
+220
+00:05:11.588 --> 00:05:13.128
+the Coggedito, go to admin.
+
+221
+00:05:13.128 --> 00:05:13.768
+So now we're going to
+
+222
+00:05:13.768 --> 00:05:17.768
+act as the employee. And
+
+223
+00:05:17.768 --> 00:05:18.708
+once we log in, there
+
+224
+00:05:18.708 --> 00:05:19.588
+are a couple of orders.
+
+225
+00:05:19.588 --> 00:05:20.508
+If we go to the
+
+226
+00:05:20.508 --> 00:05:21.868
+error number two or the
+
+227
+00:05:21.868 --> 00:05:22.748
+order number two, we can
+
+228
+00:05:22.748 --> 00:05:26.548
+see that. Hey, there's a
+
+229
+00:05:26.548 --> 00:05:27.728
+order right here. There is
+
+230
+00:05:27.728 --> 00:05:29.408
+a customer IP address. There's
+
+231
+00:05:29.408 --> 00:05:31.408
+also the clients browser a
+
+232
+00:05:31.408 --> 00:05:32.388
+lot of times a lot
+
+233
+00:05:32.388 --> 00:05:34.788
+of companies actually fingerprint their
+
+234
+00:05:34.788 --> 00:05:36.308
+users. And they make sure
+
+235
+00:05:36.308 --> 00:05:36.848
+that they look
+
+236
+00:05:36.881 --> 00:05:38.701
+at what is that user's
+
+237
+00:05:38.701 --> 00:05:40.381
+browser. This is for YouTube
+
+238
+00:05:40.381 --> 00:05:41.801
+maybe to relog in. So
+
+239
+00:05:41.801 --> 00:05:42.641
+for example, if you have
+
+240
+00:05:42.641 --> 00:05:43.861
+to a Fae -on, they
+
+241
+00:05:43.861 --> 00:05:44.581
+want to kind of fingerprint
+
+242
+00:05:44.581 --> 00:05:46.321
+your browser and see what
+
+243
+00:05:46.321 --> 00:05:47.881
+browser you use. So this
+
+244
+00:05:47.881 --> 00:05:48.501
+is also a really good
+
+245
+00:05:48.501 --> 00:05:49.301
+place. One of the things
+
+246
+00:05:49.301 --> 00:05:49.981
+that I do a lot
+
+247
+00:05:49.981 --> 00:05:50.781
+of times when I should
+
+248
+00:05:50.781 --> 00:05:52.221
+open this up really quickly,
+
+249
+00:05:52.221 --> 00:05:53.341
+go to Kaido. We can
+
+250
+00:05:53.341 --> 00:05:54.281
+see that this is our
+
+251
+00:05:54.281 --> 00:05:55.061
+browser. So one of the
+
+252
+00:05:55.061 --> 00:05:55.841
+things that you can do
+
+253
+00:05:55.841 --> 00:05:57.801
+is using the match and
+
+254
+00:05:57.801 --> 00:05:58.741
+replace. So if I go
+
+255
+00:05:58.741 --> 00:06:00.361
+to match and replace, I
+
+256
+00:06:00.361 --> 00:06:01.061
+say, hey, I want to
+
+257
+00:06:01.061 --> 00:06:02.481
+make a blind cross -rescripting
+
+258
+00:06:02.481 --> 00:06:03.581
+rule. And I'm going to
+
+259
+00:06:03.581 --> 00:06:04.921
+say with the request header,
+
+260
+00:06:04.955 --> 00:06:06.815
+Any time you see this
+
+261
+00:06:06.815 --> 00:06:08.115
+string, I want you to
+
+262
+00:06:08.115 --> 00:06:11.235
+add a script alert script.
+
+263
+00:06:11.235 --> 00:06:12.175
+And obviously for this, you
+
+264
+00:06:12.175 --> 00:06:13.075
+want to put your blind
+
+265
+00:06:13.075 --> 00:06:14.255
+cross eye scripting payload using
+
+266
+00:06:14.255 --> 00:06:16.155
+Access Hunter, but we're going
+
+267
+00:06:16.155 --> 00:06:18.155
+to add this. And now
+
+268
+00:06:18.155 --> 00:06:19.335
+we're going to go back
+
+269
+00:06:19.335 --> 00:06:21.155
+to our order. We're going
+
+270
+00:06:21.155 --> 00:06:23.915
+to flip our proxy on.
+
+271
+00:06:23.915 --> 00:06:24.815
+We're going to copy paste
+
+272
+00:06:24.815 --> 00:06:26.575
+our payload again. Now, we're
+
+273
+00:06:26.575 --> 00:06:27.415
+going to put a payload.
+
+274
+00:06:27.415 --> 00:06:28.035
+We can just put test
+
+275
+00:06:28.035 --> 00:06:29.195
+123 and we're going to
+
+276
+00:06:29.195 --> 00:06:30.255
+put the credit card number
+
+277
+00:06:30.255 --> 00:06:32.775
+in. And now we made
+
+278
+00:06:32.775 --> 00:06:32.995
+the same
+
+279
+00:06:33.028 --> 00:06:35.288
+request. Hopefully our match and
+
+280
+00:06:35.288 --> 00:06:37.328
+replace with the Linux assess
+
+281
+00:06:37.328 --> 00:06:38.008
+payload. You can see I
+
+282
+00:06:38.008 --> 00:06:39.508
+have two of these here.
+
+283
+00:06:39.508 --> 00:06:40.308
+When I disable this and
+
+284
+00:06:40.308 --> 00:06:41.188
+do that one more time,
+
+285
+00:06:41.188 --> 00:06:43.608
+go back, make another order.
+
+286
+00:06:43.608 --> 00:06:44.688
+Hopefully this match and replace
+
+287
+00:06:44.688 --> 00:06:46.368
+worked and we can actually
+
+288
+00:06:46.368 --> 00:06:47.188
+test it out and make
+
+289
+00:06:47.188 --> 00:06:49.488
+sure it works right here.
+
+290
+00:06:49.488 --> 00:06:53.968
+Test. Let's do this one
+
+291
+00:06:53.968 --> 00:06:59.308
+more time. I'll change it
+
+292
+00:06:59.308 --> 00:07:01.068
+to this one maybe.
+
+293
+00:07:01.102 --> 00:07:04.002
+Update test. It looks like
+
+294
+00:07:04.002 --> 00:07:05.142
+it is doing it in
+
+295
+00:07:05.142 --> 00:07:07.582
+the request header. So now
+
+296
+00:07:07.582 --> 00:07:09.182
+anytime the has Mozilla five
+
+297
+00:07:09.182 --> 00:07:10.142
+right here, it is putting
+
+298
+00:07:10.142 --> 00:07:12.042
+our payload within it. So
+
+299
+00:07:12.042 --> 00:07:12.722
+we're going to go back
+
+300
+00:07:12.722 --> 00:07:13.402
+and just make sure we
+
+301
+00:07:13.402 --> 00:07:14.302
+make this request one more
+
+302
+00:07:14.302 --> 00:07:15.302
+time for the sake of
+
+303
+00:07:15.302 --> 00:07:16.442
+the demo. We're going to
+
+304
+00:07:16.442 --> 00:07:17.502
+go back to our admin
+
+305
+00:07:17.502 --> 00:07:19.002
+refresh the page. There's all
+
+306
+00:07:19.002 --> 00:07:19.902
+the different requests that we
+
+307
+00:07:19.902 --> 00:07:21.042
+have made. If we go
+
+308
+00:07:21.042 --> 00:07:21.942
+to five, now we can
+
+309
+00:07:21.942 --> 00:07:22.902
+see that the cost scripting
+
+310
+00:07:22.902 --> 00:07:24.022
+payload is working. And if
+
+311
+00:07:24.022 --> 00:07:24.802
+we look at the down
+
+312
+00:07:24.802 --> 00:07:26.402
+right here, we can see
+
+313
+00:07:26.402 --> 00:07:27.782
+that it is working because
+
+314
+00:07:27.782 --> 00:07:29.142
+we match and replace our
+
+315
+00:07:29.175 --> 00:07:30.995
+header with a call, so
+
+316
+00:07:30.995 --> 00:07:32.615
+scripting payload. Keep in mind
+
+317
+00:07:32.615 --> 00:07:34.495
+if the company that you're
+
+318
+00:07:34.495 --> 00:07:35.275
+hacking on has some sort
+
+319
+00:07:35.275 --> 00:07:37.615
+of a application firewall, some
+
+320
+00:07:37.615 --> 00:07:39.595
+filtering, whatever the case may
+
+321
+00:07:39.595 --> 00:07:42.455
+be, this may bother the
+
+322
+00:07:42.455 --> 00:07:43.915
+web application firewall and not
+
+323
+00:07:43.915 --> 00:07:44.975
+let you interact with the
+
+324
+00:07:44.975 --> 00:07:46.375
+website. But a lot of
+
+325
+00:07:46.375 --> 00:07:47.455
+times it can manually just
+
+326
+00:07:47.455 --> 00:07:48.855
+match and replace these when
+
+327
+00:07:48.855 --> 00:07:50.035
+you request or being sent
+
+328
+00:07:50.035 --> 00:07:51.035
+out. This is also a
+
+329
+00:07:51.035 --> 00:07:52.315
+really good place. So for
+
+330
+00:07:52.315 --> 00:07:53.235
+example, if you're making an
+
+331
+00:07:53.235 --> 00:07:54.135
+order a lot of times
+
+332
+00:07:54.135 --> 00:07:56.295
+these companies store this data
+
+333
+00:07:56.295 --> 00:07:57.215
+and it fires, I think
+
+334
+00:07:57.249 --> 00:07:58.229
+This might be one of
+
+335
+00:07:58.229 --> 00:08:01.149
+the vulnerabilities or cases that
+
+336
+00:08:01.149 --> 00:08:01.929
+I've made a lot of
+
+337
+00:08:01.929 --> 00:08:03.529
+money from, but just simply
+
+338
+00:08:03.529 --> 00:08:05.829
+changing my user agent and
+
+339
+00:08:05.829 --> 00:08:07.069
+putting a blind cross -escripting
+
+340
+00:08:07.069 --> 00:08:08.089
+payload in there. The second
+
+341
+00:08:08.089 --> 00:08:09.209
+one is obviously putting it
+
+342
+00:08:09.209 --> 00:08:10.469
+in my name and interacting
+
+343
+00:08:10.469 --> 00:08:11.909
+with the website, maybe causing
+
+344
+00:08:11.909 --> 00:08:13.149
+them to go look at
+
+345
+00:08:13.149 --> 00:08:14.109
+my page to ban me
+
+346
+00:08:14.109 --> 00:08:14.969
+or whatever the case may
+
+347
+00:08:14.969 --> 00:08:16.269
+be. Just look at these
+
+348
+00:08:16.269 --> 00:08:17.509
+and think about it. What
+
+349
+00:08:17.509 --> 00:08:18.529
+are some places that I
+
+350
+00:08:18.529 --> 00:08:20.289
+could assume that the client
+
+351
+00:08:20.289 --> 00:08:21.409
+or the bug bunny program
+
+352
+00:08:21.409 --> 00:08:22.649
+that I'm hacking on would
+
+353
+00:08:22.649 --> 00:08:24.009
+see this information and how
+
+354
+00:08:24.009 --> 00:08:25.289
+can I abuse that for
+
+355
+00:08:25.322 --> 00:08:26.422
+a blind cross -head script.
