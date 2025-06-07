@@ -2,6 +2,8 @@
 
 **OneTab Browser : Only One Tab Allow**
 
+_OneTab Browser is a minimal and lightweight web browser built with .NET and WebView2. It allows only one tab, helping you focus on one task at a time without distractions. Perfect for deep work, study, or clean browsing._
+
 OneTab Browser – Features:
 
 1. Simple Design
