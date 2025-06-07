@@ -1,139 +1,147 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Web.WebView2.Core;
+using System.Diagnostics;
 
 namespace OneTabBrowser
 {
     public partial class frmBrowser : Form
     {
-        private List<string> history = new List<string>();
+        private List<string> history = new();
         private bool isDarkMode = false;
+
+        // Use full name to avoid ambiguity
+        private readonly System.Windows.Forms.Timer titleTimer = new System.Windows.Forms.Timer();
+        private Stopwatch stopwatch = new Stopwatch();
 
         public frmBrowser()
         {
             InitializeComponent();
 
             this.Text = "OneTab Browser - Clean & Simple";
-            this.Font = new Font("Segoe UI", 20F);
-            //this.Icon = new Icon(SystemIcons.Application, 40, 40);
-
-            //this.FormBorderStyle = FormBorderStyle.None;
-            this.Padding = new Padding(0, 10, 0, 0); // Add top space for your title bar
+            this.Font = new Font("Segoe UI", 10F);
             this.BackColor = SystemColors.Window;
-
-            // Event bindings
-            this.Load += FrmBrowser_Load;
-            btnGo.Click += BtnGo_Click;
-            btnBack.Click += BtnBack_Click;
-            btnForward.Click += BtnForward_Click;
-
-            foreach (Control ctrl in tablePanel.Controls)
-            {
-                ctrl.Font = new Font("Segoe UI", 10F);
-                ctrl.BackColor = Color.WhiteSmoke;
-                ctrl.ForeColor = Color.Black;
-                ctrl.Padding = new Padding(2);
-                ctrl.Margin = new Padding(2);
-            }
-
             webView.Source = new Uri("https://www.google.com");
+
+            titleTimer.Interval = 1000; // 1 second
+            titleTimer.Tick += TitleTimer_Tick;
         }
 
         private async void FrmBrowser_Load(object sender, EventArgs e)
         {
             try
             {
+                LoadHistoryFromFile();
+
                 await webView.EnsureCoreWebView2Async();
-                webView.CoreWebView2InitializationCompleted += WebView_CoreWebView2InitializationCompleted;
-                webView.NavigationStarting += WebView_NavigationStarting;
-                webView.NavigationCompleted += WebView_NavigationCompleted;
+                webView.CoreWebView2InitializationCompleted += WebView_Initialized;
+                webView.NavigationStarting += WebView_Navigating;
+                webView.NavigationCompleted += WebView_Navigated;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("WebView2 initialization failed: " + ex.Message);
+                MessageBox.Show($"WebView2 init failed:\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void WebView_CoreWebView2InitializationCompleted(object sender, CoreWebView2InitializationCompletedEventArgs e)
+        private void LoadHistoryFromFile()
         {
-            if (e.IsSuccess)
+            string path = Path.Combine(Application.StartupPath, "ht.txt");
+            if (File.Exists(path))
             {
-                webView.CoreWebView2.Navigate("https://www.google.com");
+                var lines = File.ReadAllLines(path);
+                foreach (var line in lines)
+                {
+                    int dashIndex = line.IndexOf(" - ");
+                    if (dashIndex >= 0)
+                    {
+                        string url = line[(dashIndex + 3)..].Trim();
+                        if (!string.IsNullOrWhiteSpace(url) && !history.Contains(url))
+                        {
+                            history.Add(url);
+                        }
+                    }
+                }
             }
-            else
+        }
+
+        private void WebView_Initialized(object sender, CoreWebView2InitializationCompletedEventArgs e)
+        {
+            if (!e.IsSuccess)
             {
-                MessageBox.Show("Failed to initialize WebView2: " + e.InitializationException.Message);
+                MessageBox.Show($"WebView2 failed:\n{e.InitializationException.Message}", "Error");
+                return;
             }
+
+            webView.CoreWebView2.Navigate("https://www.google.com");
         }
 
         private void BtnGo_Click(object sender, EventArgs e)
         {
+            lstSuggestions.Visible = false;
             string input = txtUrl.Text.Trim();
 
-            // Check if input is a URL
             if (!input.StartsWith("http", StringComparison.OrdinalIgnoreCase) &&
-                !input.Contains(".") && !Uri.IsWellFormedUriString(input, UriKind.Absolute))
+                !input.Contains(".") &&
+                !Uri.IsWellFormedUriString(input, UriKind.Absolute))
             {
-                // Treat as search query
                 input = "https://www.google.com/search?q=" + Uri.EscapeDataString(input);
             }
             else if (!input.StartsWith("http"))
             {
-                // Add https if it's a URL without scheme
                 input = "https://" + input;
             }
 
             webView.CoreWebView2.Navigate(input);
-            history.Add(input);
+
+            // Check duplicates before saving
+            if (!history.Contains(input))
+            {
+                history.Add(input);
+                SaveHistoryToFile(input);
+            }
+        }
+
+        private void SaveHistoryToFile(string url)
+        {
+            try
+            {
+                string path = Path.Combine(Application.StartupPath, "ht.txt");
+                // Avoid duplicate lines in file (optional)
+                if (!File.Exists(path) || !File.ReadLines(path).Any(line => line.Contains(url)))
+                {
+                    File.AppendAllText(path, $"{DateTime.Now:yyyy-MM-dd HH:mm:ss} - {url}{Environment.NewLine}");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to write history: " + ex.Message);
+            }
         }
 
         private void BtnBack_Click(object sender, EventArgs e)
         {
             if (webView.CanGoBack)
-            {
                 webView.GoBack();
-            }
         }
 
         private void BtnForward_Click(object sender, EventArgs e)
         {
             if (webView.CanGoForward)
-            {
                 webView.GoForward();
-            }
         }
 
-        private void BtnDarkMode_Click(object sender, EventArgs e)
-        {
-            isDarkMode = !isDarkMode;
-
-            // Change form and control colors
-            this.BackColor = isDarkMode ? Color.Black : Color.White;
-            tablePanel.BackColor = isDarkMode ? Color.FromArgb(30, 30, 30) : Color.LightGray;
-
-            foreach (Control ctrl in tablePanel.Controls)
-            {
-                ctrl.ForeColor = isDarkMode ? Color.White : Color.Black;
-                ctrl.BackColor = isDarkMode ? Color.FromArgb(45, 45, 45) : Color.White;
-            }
-
-            // Apply page background via JavaScript
-            if (webView?.CoreWebView2 != null)
-            {
-                string bgColor = isDarkMode ? "#1e1e1e" : "#ffffff";
-                webView.CoreWebView2.ExecuteScriptAsync($"document.body.style.background = '{bgColor}';");
-            }
-        }
-
-        private void WebView_NavigationStarting(object sender, CoreWebView2NavigationStartingEventArgs e)
+        private void WebView_Navigating(object sender, CoreWebView2NavigationStartingEventArgs e)
         {
             progressBar.Value = 10;
         }
 
-        private void WebView_NavigationCompleted(object sender, CoreWebView2NavigationCompletedEventArgs e)
+        private void WebView_Navigated(object sender, CoreWebView2NavigationCompletedEventArgs e)
         {
             txtUrl.Text = webView.Source?.ToString() ?? "";
             progressBar.Value = 100;
@@ -141,19 +149,28 @@ namespace OneTabBrowser
             Task.Delay(400).ContinueWith(_ =>
             {
                 if (!this.IsDisposed)
-                {
                     this.Invoke(() => progressBar.Value = 0);
-                }
             });
+
+            lstSuggestions.Visible = false;
+
+            stopwatch.Restart();
+            titleTimer.Start();
+        }
+
+        private void TitleTimer_Tick(object sender, EventArgs e)
+        {
+            TimeSpan elapsed = stopwatch.Elapsed;
+            this.Text = $"OneTab Browser - Viewing for {elapsed.Hours:D2}:{elapsed.Minutes:D2}:{elapsed.Seconds:D2}";
         }
 
         private void txtUrl_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                BtnGo_Click(sender, e); // Simulate Go button click
+                BtnGo_Click(sender, e);
                 e.Handled = true;
-                e.SuppressKeyPress = true; // Prevent "ding" sound
+                e.SuppressKeyPress = true;
             }
         }
 
@@ -167,42 +184,63 @@ namespace OneTabBrowser
                 return;
             }
 
-            var historyMatches = history
+            var suggestions = history
                 .Where(h => h.Contains(text, StringComparison.OrdinalIgnoreCase))
-                .Take(5);
+                .Take(5)
+                .ToList();
 
-            // Get Google suggestions using Web API (free, no key needed)
-            // But since no internet call here, I provide a simple example for history only.
-
-            // Combine results - history first, then Google suggestions
-            var suggestions = historyMatches.ToList();
-
-            // TODO: You can call Google suggest API if you want (advanced)
-
-            if (suggestions.Count > 0)
-            {
-                lstSuggestions.DataSource = suggestions;
-                lstSuggestions.Visible = true;
+            lstSuggestions.DataSource = suggestions;
+            lstSuggestions.Visible = suggestions.Count > 0;
+            if (lstSuggestions.Visible)
                 lstSuggestions.BringToFront();
-            }
-            else
-            {
-                lstSuggestions.Visible = false;
-            }
         }
 
         private void LstSuggestions_Click(object sender, EventArgs e)
         {
-            if (lstSuggestions.SelectedItem != null)
-            {
-                txtUrl.Text = lstSuggestions.SelectedItem.ToString();
-                lstSuggestions.Visible = false;
-                txtUrl.Focus();
-                txtUrl.SelectionStart = txtUrl.Text.Length;
+            if (lstSuggestions.SelectedItem is not string selected) return;
 
-                BtnGo_Click(sender, e); // Simulate Go button click
+            txtUrl.Text = selected;
+            lstSuggestions.Visible = false;
+            txtUrl.Focus();
+            txtUrl.SelectionStart = selected.Length;
 
-            }
+            BtnGo_Click(sender, e);
         }
+
+        private void BtnClearHistory_Click(object sender, EventArgs e)
+        {
+            // Clear in-memory history
+            history.Clear();
+
+            // Clear history file
+            try
+            {
+                string path = Path.Combine(Application.StartupPath, "ht.txt");
+                if (File.Exists(path))
+                    File.WriteAllText(path, string.Empty);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to clear history: " + ex.Message);
+                return;
+            }
+
+            // Clear suggestions and URL textbox
+            lstSuggestions.Visible = false;
+            //txtUrl.Clear();
+
+            MessageBox.Show("History cleared successfully.", "Clear History", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == Keys.Escape)
+            {
+                txtUrl.Clear();
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
     }
 }
